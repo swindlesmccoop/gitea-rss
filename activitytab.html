@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en-US" class="theme-">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Swindles McCoop -  CBPS Git Server</title>
+	<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQ0JQUyBHaXQgU2VydmVyIiwic2hvcnRfbmFtZSI6IkNCUFMgR2l0IFNlcnZlciIsInN0YXJ0X3VybCI6Imh0dHBzOi8vZ2l0LmNicHMueHl6LyIsImljb25zIjpbeyJzcmMiOiJodHRwczovL2dpdC5jYnBzLnh5ei9hc3NldHMvaW1nL2xvZ28ucG5nIiwidHlwZSI6ImltYWdlL3BuZyIsInNpemVzIjoiNTEyeDUxMiJ9LHsic3JjIjoiaHR0cHM6Ly9naXQuY2Jwcy54eXovYXNzZXRzL2ltZy9sb2dvLnN2ZyIsInR5cGUiOiJpbWFnZS9zdmcreG1sIiwic2l6ZXMiOiI1MTJ4NTEyIn1dfQ=="/>
+	<meta name="theme-color" content="#6cc644">
+	<meta name="default-theme" content="auto" />
+	<meta name="author" content="Gitea - Git with a cup of tea" />
+	<meta name="description" content="Gitea (Git with a cup of tea) is a painless self-hosted Git service written in Go" />
+	<meta name="keywords" content="go,git,self-hosted,gitea">
+	<meta name="referrer" content="no-referrer" />
+
+	<script>
+		<!--   -->
+		window.config = {
+			appVer: '1.16.1',
+			appSubUrl: '',
+			assetUrlPrefix: '\/assets',
+			runModeIsProd:  true ,
+			customEmojis: {"codeberg":":codeberg:","git":":git:","gitea":":gitea:","github":":github:","gitlab":":gitlab:","gogs":":gogs:"},
+			useServiceWorker:  true ,
+			csrfToken: 'poHLFdAEQCIfAfWyUTf7PwSzjA46MTY0NTYzNzc2MTk0ODU2MjQxMQ',
+			pageData: {},
+			requireTribute:  null ,
+			notificationSettings: {"EventSourceUpdateTime":10000,"MaxTimeout":60000,"MinTimeout":10000,"TimeoutStep":10000}, 
+			enableTimeTracking:  true ,
+			
+			mermaidMaxSourceCharacters:  5000 ,
+			
+			i18n: {
+				copy_success: 'Copied!',
+				copy_error: 'Copy failed',
+				error_occurred: 'An error occurred',
+				network_error: 'Network error',
+			},
+		};
+		
+		window.config.pageData = window.config.pageData || {};
+	</script>
+	<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+	<link rel="alternate icon" href="/assets/img/favicon.png" type="image/png">
+	<link rel="stylesheet" href="/assets/css/index.css?v=50ce8d80d61ca74c6c21ebd2027218b5">
+	<noscript>
+		<style>
+			.dropdown:hover > .menu { display: block; }
+			.ui.secondary.menu .dropdown.item > .menu { margin-top: 0; }
+		</style>
+	</noscript>
+
+	<meta property="og:title" content="swindlesmccoop" />
+	<meta property="og:type" content="profile" />
+	<meta property="og:image" content="https://git.cbps.xyz/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90" />
+	<meta property="og:url" content="https://git.cbps.xyz/swindlesmccoop" />
+	
+		<meta property="og:description" content="The most BASED git site of all time">
+	
+
+<meta property="og:site_name" content="CBPS Git Server" />
+
+	<link rel="stylesheet" href="/assets/css/theme-auto.css?v=50ce8d80d61ca74c6c21ebd2027218b5">
+
+
+</head>
+<body>
+	
+
+	<div class="full height">
+		<noscript>This website works better with JavaScript.</noscript>
+
+		
+
+		
+			<div class="ui top secondary stackable main menu following bar light">
+				<div class="ui container" id="navbar">
+	<div class="item brand" style="justify-content: space-between;">
+		<a href="/" data-content="Home">
+			<img class="ui mini image" width="30" height="30" src="/assets/img/logo.svg">
+		</a>
+		<div class="ui basic icon button mobile-only" id="navbar-expand-toggle">
+			<i class="sidebar icon"></i>
+		</div>
+	</div>
+
+	
+		<a class="item " href="/explore/repos">Explore</a>
+	
+
+	
+
+	
+
+
+	
+		<a class="item" target="_blank" rel="noopener noreferrer" href="https://docs.gitea.io">Help</a>
+		<div class="right stackable menu">
+			
+				<a class="item" href="/user/sign_up">
+					<svg viewBox="0 0 16 16" class="svg octicon-person" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm.061 3.073a4 4 0 1 0-5.123 0 6.004 6.004 0 0 0-3.431 5.142.75.75 0 0 0 1.498.07 4.5 4.5 0 0 1 8.99 0 .75.75 0 1 0 1.498-.07 6.005 6.005 0 0 0-3.432-5.142z"/></svg> Register
+				</a>
+			
+			<a class="item" rel="nofollow" href="/user/login?redirect_to=%2fswindlesmccoop%3ftab%3dactivity">
+				<svg viewBox="0 0 16 16" class="svg octicon-sign-in" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 2.75C2 1.784 2.784 1 3.75 1h2.5a.75.75 0 0 1 0 1.5h-2.5a.25.25 0 0 0-.25.25v10.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 0 1.5h-2.5A1.75 1.75 0 0 1 2 13.25V2.75zm6.56 4.5 1.97-1.97a.75.75 0 1 0-1.06-1.06L6.22 7.47a.75.75 0 0 0 0 1.06l3.25 3.25a.75.75 0 1 0 1.06-1.06L8.56 8.75h5.69a.75.75 0 0 0 0-1.5H8.56z"/></svg> Sign In
+			</a>
+		</div>
+	
+</div>
+
+			</div>
+		
+
+
+
+<div class="page-content user profile">
+	<div class="ui container">
+		<div class="ui stackable grid">
+			<div class="ui five wide column">
+				<div class="ui card">
+					
+						<span class="image" id="profile-avatar">
+							<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=870" title="Swindles McCoop" width="290" height="290"/>
+						</span>
+					
+					<div class="content word-break profile-avatar-name">
+						<span class="header text center">Swindles McCoop</span>
+						<span class="username text center">swindlesmccoop</span>
+					</div>
+					<div class="extra content word-break">
+						<ul>
+							
+								<li><svg viewBox="0 0 16 16" class="svg octicon-location" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.536 3.464a5 5 0 0 1 0 7.072L8 14.07l-3.536-3.535a5 5 0 1 1 7.072-7.072v.001zm1.06 8.132a6.5 6.5 0 1 0-9.192 0l3.535 3.536a1.5 1.5 0 0 0 2.122 0l3.535-3.536zM8 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg> Boxing Ring</li>
+							
+							
+							
+								<li>
+									<svg viewBox="0 0 16 16" class="svg octicon-link" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>
+									<a target="_blank" rel="noopener noreferrer me" href="https://swindlesmccoop.xyz">https://swindlesmccoop.xyz</a>
+								</li>
+							
+							
+								<li>
+									<div class="render-content markup"><p>The most BASED git site of all time</p>
+</div>
+								</li>
+							
+							
+							<li><svg viewBox="0 0 16 16" class="svg octicon-clock" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm.5 4.75a.75.75 0 0 0-1.5 0v3.5a.75.75 0 0 0 .471.696l2.5 1a.75.75 0 0 0 .557-1.392L8.5 7.742V4.75z"/></svg> Joined on Feb 11, 2022</li>
+							
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="ui eleven wide column">
+				<div class="ui secondary stackable pointing tight menu">
+					<a class=' item' href="/swindlesmccoop">
+						<svg viewBox="0 0 16 16" class="svg octicon-repo" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 0 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 0 1 1-1h8zM5 12.25v3.25a.25.25 0 0 0 .4.2l1.45-1.087a.25.25 0 0 1 .3 0L8.6 15.7a.25.25 0 0 0 .4-.2v-3.25a.25.25 0 0 0-.25-.25h-3.5a.25.25 0 0 0-.25.25z"/></svg> Repositories
+					</a>
+					<a class='active item' href="/swindlesmccoop?tab=activity">
+						<svg viewBox="0 0 16 16" class="svg octicon-rss" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M2.002 2.725a.75.75 0 0 1 .797-.699C8.79 2.42 13.58 7.21 13.974 13.201a.75.75 0 1 1-1.497.098 10.502 10.502 0 0 0-9.776-9.776.75.75 0 0 1-.7-.798zM2 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm.84-5.95a.75.75 0 0 0-.179 1.489c2.509.3 4.5 2.291 4.8 4.8a.75.75 0 1 0 1.49-.178A7.003 7.003 0 0 0 2.838 7.05z"/></svg> Public Activity
+					</a>
+					
+						<a class=' item' href="/swindlesmccoop?tab=stars">
+							<svg viewBox="0 0 16 16" class="svg octicon-star" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694v.001z"/></svg> Starred Repositories
+							
+						</a>
+					
+					<a class=' item' href="/swindlesmccoop?tab=following">
+						<svg viewBox="0 0 16 16" class="svg octicon-person" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm.061 3.073a4 4 0 1 0-5.123 0 6.004 6.004 0 0 0-3.431 5.142.75.75 0 0 0 1.498.07 4.5 4.5 0 0 1 8.99 0 .75.75 0 1 0 1.498-.07 6.005 6.005 0 0 0-3.432-5.142z"/></svg> Following
+						
+					</a>
+					<a class=' item' href="/swindlesmccoop?tab=followers">
+						<svg viewBox="0 0 16 16" class="svg octicon-person" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm.061 3.073a4 4 0 1 0-5.123 0 6.004 6.004 0 0 0-3.431 5.142.75.75 0 0 0 1.498.07 4.5 4.5 0 0 1 8.99 0 .75.75 0 1 0 1.498-.07 6.005 6.005 0 0 0-3.432-5.142z"/></svg> Followers
+						
+					</a>
+				</div>
+
+				
+					
+					
+	<div id="user-heatmap" data-heatmap-data="[{&#34;timestamp&#34;:1644620400,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1644727500,&#34;contributions&#34;:2},{&#34;timestamp&#34;:1644850800,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1644868800,&#34;contributions&#34;:3},{&#34;timestamp&#34;:1644942600,&#34;contributions&#34;:4},{&#34;timestamp&#34;:1644943500,&#34;contributions&#34;:2},{&#34;timestamp&#34;:1644957000,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1644988500,&#34;contributions&#34;:3},{&#34;timestamp&#34;:1644989400,&#34;contributions&#34;:5},{&#34;timestamp&#34;:1644990300,&#34;contributions&#34;:12},{&#34;timestamp&#34;:1644992100,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1644993000,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1645020000,&#34;contributions&#34;:2},{&#34;timestamp&#34;:1645020900,&#34;contributions&#34;:2},{&#34;timestamp&#34;:1645024500,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1645031700,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1645036200,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1645163100,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1645165800,&#34;contributions&#34;:1},{&#34;timestamp&#34;:1645544700,&#34;contributions&#34;:2},{&#34;timestamp&#34;:1645625700,&#34;contributions&#34;:3},{&#34;timestamp&#34;:1645631100,&#34;contributions&#34;:1}]">
+		<div slot="loading">
+			<div class="ui active centered inline indeterminate text loader" id="loading-heatmap">Loading Heatmap…</div>
+		</div>
+	</div>
+	<div class="ui divider"></div>
+
+
+					<div class="feeds">
+						
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/gitea-rss/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/gitea-rss" rel="nofollow">swindlesmccoop/gitea-rss</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/gitea-rss/commit/cdf4a0cc2ea43663958288217fef9abe030a6e6a">cdf4a0cc2e</a>
+										<span class="text truncate light grey">
+											RSS Header Creation
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 23 Feb 2022 15:55:06 UTC">2 hours ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								created branch <a href="/swindlesmccoop/gitea-rss/src/branch/master" rel="nofollow">master</a> in <a href="/swindlesmccoop/gitea-rss" rel="nofollow">swindlesmccoop/gitea-rss</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 23 Feb 2022 14:26:27 UTC">3 hours ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/gitea-rss/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/gitea-rss" rel="nofollow">swindlesmccoop/gitea-rss</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/gitea-rss/commit/2c20ffebe4b555a3460fd361a8a5e89e31c157d0">2c20ffebe4</a>
+										<span class="text truncate light grey">
+											Initial commit
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 23 Feb 2022 14:26:27 UTC">3 hours ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							created repository <a href="/swindlesmccoop/gitea-rss" rel="nofollow">swindlesmccoop/gitea-rss</a>
+						
+					</p>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 23 Feb 2022 14:26:11 UTC">3 hours ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-repo" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 1 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 0 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 0 1 1-1h8zM5 12.25v3.25a.25.25 0 0 0 .4.2l1.45-1.087a.25.25 0 0 1 .3 0L8.6 15.7a.25.25 0 0 0 .4-.2v-3.25a.25.25 0 0 0-.25-.25h-3.5a.25.25 0 0 0-.25.25z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/not-just-dotfiles/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/not-just-dotfiles" rel="nofollow">swindlesmccoop/not-just-dotfiles</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/31ea27bd4c76721f6929129987821cc9977cab12">31ea27bd4c</a>
+										<span class="text truncate light grey">
+											Make POSIX compliant
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Tue, 22 Feb 2022 15:51:20 UTC">1 day ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/not-just-dotfiles/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/not-just-dotfiles" rel="nofollow">swindlesmccoop/not-just-dotfiles</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/fe5f72175094e195b2f0a76ee7a6ad51191c8550">fe5f721750</a>
+										<span class="text truncate light grey">
+											Alphabetically ordered
+										</span>
+									</li>
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/668d622b6dbc091d145c75aed6914df9ba844083">668d622b6d</a>
+										<span class="text truncate light grey">
+											Make POSIX compliant
+										</span>
+									</li>
+								
+								<li><a href="/swindlesmccoop/not-just-dotfiles/compare/07a258412bb27f39d8d13cd5c7430a04437e312e...fe5f72175094e195b2f0a76ee7a6ad51191c8550">Compare 2 commits »</a></li>
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Tue, 22 Feb 2022 15:46:13 UTC">1 day ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/nhentai-dl/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/nhentai-dl" rel="nofollow">swindlesmccoop/nhentai-dl</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/assets/img/avatar_default.png" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/nhentai-dl/commit/bde8a23e9d53a9ab57472c2578d5c3e35b9107d4">bde8a23e9d</a>
+										<span class="text truncate light grey">
+											Update documentation
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Fri, 18 Feb 2022 06:34:24 UTC">5 days ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/not-just-dotfiles/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/not-just-dotfiles" rel="nofollow">swindlesmccoop/not-just-dotfiles</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/assets/img/avatar_default.png" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/07a258412bb27f39d8d13cd5c7430a04437e312e">07a258412b</a>
+										<span class="text truncate light grey">
+											Configure default branch to be master
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 15:26:44 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/not-just-dotfiles/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/not-just-dotfiles" rel="nofollow">swindlesmccoop/not-just-dotfiles</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/assets/img/avatar_default.png" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/bb7d1d1991653327e26e8440de9c4f097a45bcc2">bb7d1d1991</a>
+										<span class="text truncate light grey">
+											Add user scripts
+										</span>
+									</li>
+								
+									
+									<li>
+										<img class="mr-2" src="/assets/img/avatar_default.png" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/53c9d47c8d225ecf8187e097e987aecfcd25df01">53c9d47c8d</a>
+										<span class="text truncate light grey">
+											Add shell scripts
+										</span>
+									</li>
+								
+								<li><a href="/swindlesmccoop/not-just-dotfiles/compare/57b78a6768c7a2e76f8349e877c340986645fef3...bb7d1d1991653327e26e8440de9c4f097a45bcc2">Compare 2 commits »</a></li>
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 14:24:15 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/swindlesmccoop/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/swindlesmccoop" rel="nofollow">swindlesmccoop/swindlesmccoop</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/assets/img/avatar_default.png" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/swindlesmccoop/commit/bf74dae468de8bd716c8a08100b7f2a51b964168">bf74dae468</a>
+										<span class="text truncate light grey">
+											Move to dotfiles repo
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 14:23:11 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/not-just-dotfiles/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/not-just-dotfiles" rel="nofollow">swindlesmccoop/not-just-dotfiles</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/57b78a6768c7a2e76f8349e877c340986645fef3">57b78a6768</a>
+										<span class="text truncate light grey">
+											Change editor to nvim
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 14:07:53 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								pushed to <a href="/swindlesmccoop/not-just-dotfiles/src/branch/master" rel="nofollow">master</a> at <a href="/swindlesmccoop/not-just-dotfiles" rel="nofollow">swindlesmccoop/not-just-dotfiles</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+									
+									<li>
+										<img class="mr-2" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="swindlesmccoop" width="16" height="16"/>
+										<a class="commit-id mr-2" href="/swindlesmccoop/not-just-dotfiles/commit/8da6ba18503f520946a10936bdf2f8fe181ddfb1">8da6ba1850</a>
+										<span class="text truncate light grey">
+											Git configuration
+										</span>
+									</li>
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 14:07:27 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+							deleted branch main from <a href="/swindlesmccoop/sspkgbuild" rel="nofollow">swindlesmccoop/sspkgbuild</a>
+						
+					</p>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:55:47 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								created branch <a href="/swindlesmccoop/sspkgbuild/src/branch/master" rel="nofollow">master</a> in <a href="/swindlesmccoop/sspkgbuild" rel="nofollow">swindlesmccoop/sspkgbuild</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:55:47 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+							deleted branch main from <a href="/swindlesmccoop/pt" rel="nofollow">swindlesmccoop/pt</a>
+						
+					</p>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:55:02 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								created branch <a href="/swindlesmccoop/pt/src/branch/master" rel="nofollow">master</a> in <a href="/swindlesmccoop/pt" rel="nofollow">swindlesmccoop/pt</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:55:02 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+							deleted branch main from <a href="/swindlesmccoop/nyaa-cli" rel="nofollow">swindlesmccoop/nyaa-cli</a>
+						
+					</p>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:54:13 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								created branch <a href="/swindlesmccoop/nyaa-cli/src/branch/master" rel="nofollow">master</a> in <a href="/swindlesmccoop/nyaa-cli" rel="nofollow">swindlesmccoop/nyaa-cli</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:54:13 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+							deleted branch main from <a href="/swindlesmccoop/goals" rel="nofollow">swindlesmccoop/goals</a>
+						
+					</p>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:53:25 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+	<div class="news">
+		<div class="ui left">
+			<img class="ui avatar image" src="/avatars/1f6004bd1b2eafc4e8dbd8c8df4f8c90?size=84" title="Swindles McCoop" width="28" height="28"/>
+		</div>
+		<div class="ui grid">
+			<div class="ui fourteen wide column">
+				<div class="push news">
+					<p>
+						
+							<a href="/swindlesmccoop" title="Swindles McCoop">swindlesmccoop</a>
+						
+						
+							
+								created branch <a href="/swindlesmccoop/goals/src/branch/master" rel="nofollow">master</a> in <a href="/swindlesmccoop/goals" rel="nofollow">swindlesmccoop/goals</a>
+							
+						
+					</p>
+					
+						<div class="content">
+							<ul>
+								
+								
+								
+								
+							</ul>
+						</div>
+					
+					<p class="text italic light grey"><span class="time-since" title="Wed, 16 Feb 2022 05:53:25 UTC">1 week ago</span></p>
+				</div>
+			</div>
+			<div class="ui two wide right aligned column">
+				<span class="text grey"><svg viewBox="0 0 16 16" class="svg octicon-git-commit" width="32" height="32" aria-hidden="true"><path fill-rule="evenodd" d="M10.5 7.75a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm1.43.75a4.002 4.002 0 0 1-7.86 0H.75a.75.75 0 1 1 0-1.5h3.32a4.001 4.001 0 0 1 7.86 0h3.32a.75.75 0 1 1 0 1.5h-3.32z"/></svg></span>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+	</div>
+
+
+					</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	
+
+	</div>
+
+	
+
+	<footer>
+	<div class="ui container">
+		<div class="ui left">
+			Powered by Gitea Version: 1.16.1 Page: <strong>38ms</strong> Template: <strong>14ms</strong>
+		</div>
+		<div class="ui right links">
+			
+			<div class="ui language bottom floating slide up dropdown link item">
+				<svg viewBox="0 0 16 16" class="svg octicon-globe" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M1.543 7.25h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.506 6.506 0 0 0-4.666 5.5zm2.733 1.5H1.543a6.506 6.506 0 0 0 4.666 5.5 11.13 11.13 0 0 1-.352-.552c-.715-1.192-1.437-2.874-1.581-4.948zm1.504 0h4.44a9.637 9.637 0 0 1-1.363 4.177c-.306.51-.612.919-.857 1.215a9.978 9.978 0 0 1-.857-1.215A9.637 9.637 0 0 1 5.78 8.75zm4.44-1.5H5.78a9.637 9.637 0 0 1 1.363-4.177c.306-.51.612-.919.857-1.215.245.296.55.705.857 1.215A9.638 9.638 0 0 1 10.22 7.25zm1.504 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.506 6.506 0 0 0 4.666-5.5h-2.733zm2.733-1.5h-2.733c-.144-2.074-.866-3.756-1.58-4.948a11.738 11.738 0 0 0-.353-.552 6.506 6.506 0 0 1 4.666 5.5zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0z"/></svg>
+				<div class="text">English</div>
+				<div class="menu language-menu">
+					
+						<a lang="id-ID" data-url="/?lang=id-ID" class="item ">bahasa Indonesia</a>
+					
+						<a lang="de-DE" data-url="/?lang=de-DE" class="item ">Deutsch</a>
+					
+						<a lang="en-US" data-url="/?lang=en-US" class="item active selected">English</a>
+					
+						<a lang="es-ES" data-url="/?lang=es-ES" class="item ">español</a>
+					
+						<a lang="fr-FR" data-url="/?lang=fr-FR" class="item ">français</a>
+					
+						<a lang="it-IT" data-url="/?lang=it-IT" class="item ">italiano</a>
+					
+						<a lang="lv-LV" data-url="/?lang=lv-LV" class="item ">latviešu</a>
+					
+						<a lang="hu-HU" data-url="/?lang=hu-HU" class="item ">magyar nyelv</a>
+					
+						<a lang="nl-NL" data-url="/?lang=nl-NL" class="item ">Nederlands</a>
+					
+						<a lang="pl-PL" data-url="/?lang=pl-PL" class="item ">polski</a>
+					
+						<a lang="pt-PT" data-url="/?lang=pt-PT" class="item ">Português de Portugal</a>
+					
+						<a lang="pt-BR" data-url="/?lang=pt-BR" class="item ">português do Brasil</a>
+					
+						<a lang="fi-FI" data-url="/?lang=fi-FI" class="item ">suomi</a>
+					
+						<a lang="sv-SE" data-url="/?lang=sv-SE" class="item ">svenska</a>
+					
+						<a lang="tr-TR" data-url="/?lang=tr-TR" class="item ">Türkçe</a>
+					
+						<a lang="cs-CZ" data-url="/?lang=cs-CZ" class="item ">čeština</a>
+					
+						<a lang="el-GR" data-url="/?lang=el-GR" class="item ">ελληνικά</a>
+					
+						<a lang="bg-BG" data-url="/?lang=bg-BG" class="item ">български</a>
+					
+						<a lang="ru-RU" data-url="/?lang=ru-RU" class="item ">русский</a>
+					
+						<a lang="sr-SP" data-url="/?lang=sr-SP" class="item ">српски</a>
+					
+						<a lang="uk-UA" data-url="/?lang=uk-UA" class="item ">Українська</a>
+					
+						<a lang="fa-IR" data-url="/?lang=fa-IR" class="item ">فارسی</a>
+					
+						<a lang="ml-IN" data-url="/?lang=ml-IN" class="item ">മലയാളം</a>
+					
+						<a lang="ja-JP" data-url="/?lang=ja-JP" class="item ">日本語</a>
+					
+						<a lang="zh-CN" data-url="/?lang=zh-CN" class="item ">简体中文</a>
+					
+						<a lang="zh-TW" data-url="/?lang=zh-TW" class="item ">繁體中文（台灣）</a>
+					
+						<a lang="zh-HK" data-url="/?lang=zh-HK" class="item ">繁體中文（香港）</a>
+					
+						<a lang="ko-KR" data-url="/?lang=ko-KR" class="item ">한국어</a>
+					
+				</div>
+			</div>
+			<a href="/assets/js/licenses.txt">Licenses</a>
+			<a href="/api/swagger">API</a>
+			<a target="_blank" rel="noopener noreferrer" href="https://gitea.io">Website</a>
+			
+			<span class="version">Go1.17.6</span>
+		</div>
+	</div>
+</footer>
+
+
+
+
+	<script src="/assets/js/index.js?v=50ce8d80d61ca74c6c21ebd2027218b5"></script>
+
+</body>
+</html>
+
