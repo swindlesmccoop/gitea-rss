@@ -10,9 +10,9 @@ The things I want to include in the RSS feed:
 swindlesmccoop pushed to master at swindlesmccoop/gitea-rss)
 
 ### Description
-(2c20ffebe4: Initial commit)
+2c20ffebe4: Initial commit
 ### Date
-(Wed, 23 Feb 2022 14:26:27 +0000)
+Wed, 23 Feb 2022 14:26:27 +0000
 ### Commit link
 https://git.cbps.xyz/swindlesmccoop/gitea-rss/commit/2c20ffebe4b555a3460fd361a8a5e89e31c157d0
 
