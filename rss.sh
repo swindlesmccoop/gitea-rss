@@ -7,14 +7,14 @@ POSTNUM=20
 update_rss () {
 	curl -A "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36" -sLo "$USERNAME".html "$GITSITE/$USERNAME?tab=activity"
 	for i in $(seq $POSTNUM); do
-		echo "Not implemented"
+		echo "Not done"
 	done
 }
 
 if [ -f rss.xml ]; then
 	while true; do
 		update_rss
-		sleep 60
+		sleep 5
 	done
 	else
 		#create rss feed skeleton
