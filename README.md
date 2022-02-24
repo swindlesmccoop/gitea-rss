@@ -7,7 +7,7 @@ The problem with getting this part done is that sed and grep have limited capabi
 The things I want to include in the RSS feed:
 
 ### Title
-swindlesmccoop pushed to master at swindlesmccoop/gitea-rss)
+swindlesmccoop pushed to master at swindlesmccoop/gitea-rss
 
 ### Description
 2c20ffebe4: Initial commit
