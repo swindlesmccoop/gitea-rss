@@ -47,15 +47,6 @@ if [ -f rss.xml ]; then
 		sleep $UPDATEINTERVAL
 	done
 	else
-		#create rss feed skeleton
-		BLOGNAME="$USERNAME at $(echo $GITSITE | sed "s|https://||g")"
-		BLOGDESC="$(curl -A "$USERAGENT" -sL $FULLURL?tab=activity | grep -o -P '(?<=<meta property="og:description" content=").*(?=">)')"
-		printf '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/css" href="rss.css" ?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n\n<channel>\n<title>' > rss.xml
-		printf "$BLOGNAME" >> rss.xml
-		printf '</title>\n<description>' >> rss.xml
-		printf "$BLOGDESC" >> rss.xml
-		printf '</description>\n<language>en-us</language>\n<link>' >> rss.xml
-		printf "$FULLURL" >> rss.xml
-		printf '</link>\n\n<!-- Activity -->\n\n' >> rss.xml
-		echo "RSS feed created! Run the script again to start updating it."
+		make_rss
+		echo "RSS feed created! Please run the script again to start updating it."
 fi
