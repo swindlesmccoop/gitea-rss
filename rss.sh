@@ -40,10 +40,24 @@ update_rss () {
 	done
 }
 
+read -r -p "Would you like to upload the RSS feed to an FTP server for the duration you run this script? (y/n) " FTP
+if [ $FTP = y ]; then
+	read -r -p "Username: " FTPUSERNAME
+	read -r -p "Password: " FTPPASSWORD
+	read -r -p "Endpoint: " ENDPOINT
+fi
+
 if [ -f rss.xml ]; then
 	while true; do
 		update_rss >> rss.xml
 		echo "Updated RSS feed!"
+		if [ $FTP = y ]; then
+			lftp "$ENDPOINT" <<EOF
+			user "$FTPUSERNAME" "$FTPPASSWORD"
+			put rss.xml
+			exit
+EOF
+		fi
 		sleep $UPDATEINTERVAL
 	done
 	else
