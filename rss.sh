@@ -31,7 +31,7 @@ update_rss () {
 	SEQNUM=1
 	#EVER TRY PARSING HTML WITH PLAIN COREUTILS?? NOT FUN!!!!!!
 	for i in $(seq $POSTNUM); do
-		TITLE=$(awk "/push news/{i++}i==$SEQNUM" "$USERNAME.html" | grep -A 7 "push news" | sed "1,7d" | sed "s/				//g" | sed 's/<a href=\"[^"]*\" rel="nofollow">//g' | sed 's/<\/a>//g' | sed 's/^./\u&/')
+		TITLE=$(awk "/push news/{i++}i==$SEQNUM" "$USERNAME.html" | grep -A 7 "push news" | sed "1,7d" | sed "s/				//g" | sed 's/<a href=\"[^"]*\" rel="nofollow">//g' | sed 's/<\/a>//g' | sed 's/^./\u&/' | sed 's/&#34;/"/g' | sed "s/&#39;/'/g")
 		if [ "$TITLE" = "" ]; then
 			TITLE="Empty title"
 		fi
