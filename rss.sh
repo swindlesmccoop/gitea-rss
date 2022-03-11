@@ -32,8 +32,8 @@ update_rss () {
 	#EVER TRY PARSING HTML WITH PLAIN COREUTILS?? NOT FUN!!!!!!
 	for i in $(seq $POSTNUM); do
 		TITLE=$(awk "/push news/{i++}i==$SEQNUM" "$USERNAME.html" | grep -A 7 "push news" | sed "1,7d" | sed "s/				//g" | sed 's/<a href=\"[^"]*\" rel="nofollow">//g' | sed 's/<\/a>//g' | sed 's/^./\u&/')
-		if [ $TITLE = '' ]; then
-			return
+		if [ "$TITLE" = "" ]; then
+			TITLE="Empty title"
 		fi
 		PUBDATE=$(grep -o -P '(?<=<span class="time-since" title=").*(?= UTC)' "$USERNAME.html" | sed -n "$SEQNUM"p)
 		DESCRIPTION="$(grep -A 1 '<span class="text truncate light grey">' $USERNAME.html -m $SEQNUM | tail -n 1 | sed "s/	//g" | sed "s/&#39;/'/g" | sed 's/<a href=\"[^"]*//g' | sed 's/<\/a>//g' | sed 's/ " class="link"//g' | sed 's/>/ /g')"
