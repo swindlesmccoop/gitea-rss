@@ -16,7 +16,7 @@ USERAGENT="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, l
 make_rss () {
 	BLOGNAME="$USERNAME at $(echo $GITSITE | sed "s|https://||g")"
 	BLOGDESC="$(curl -A "$USERAGENT" -sL $FULLURL?tab=activity | grep -o -P '(?<=<meta property="og:description" content=").*(?=">)')"
-	printf '<?xml version="1.0" encoding="utf-8"?>\n<?xml-stylesheet type="text/css" href="rss.css" ?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n\n<channel>\n<title>' > rss.xml
+	printf '<?xml version="1.0" encoding="utf-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n\n<channel>\n<title>' > rss.xml
 	printf "$BLOGNAME" >> rss.xml
 	printf '</title>\n<description>' >> rss.xml
 	printf "$BLOGDESC" >> rss.xml
@@ -38,9 +38,10 @@ update_rss () {
 		PUBDATE=$(grep -o -P '(?<=<span class="time-since" title=").*(?= UTC)' "$USERNAME.html" | sed -n "$SEQNUM"p)
 		DESCRIPTION="$(grep -A 1 '<span class="text truncate light grey">' $USERNAME.html -m $SEQNUM | tail -n 1 | sed "s/	//g" | sed "s/&#39;/'/g" | sed 's/<a href=\"[^"]*//g' | sed 's/<\/a>//g' | sed 's/ " class="link"//g' | sed 's/>/ /g')"
 		URL="$(grep -o 'mr-2" href=".*' $USERNAME.html -m $SEQNUM | tail -n 1 | sed "s/\///" | sed 's/mr-2" href="//g' | sed "s/\">.*<\/a>//g")"
-		printf "<item>\n<title>$TITLE</title>\n<guid>$GITSITE/$URL</guid>\n<pubDate>$PUBDATE +0000</pubDate><description><![CDATA[\n<p>$DESCRIPTION</p>\n]]></description>\n</item>\n\n"
+		printf "<item>\n<title>$TITLE</title>\n<guid>$GITSITE/$URL</guid>\n<link>$GITSITE/$URL</link>\n<pubDate>$PUBDATE +0000</pubDate>\n<description><![CDATA[\n<p>$DESCRIPTION</p>\n]]></description>\n</item>\n\n"
 		SEQNUM=$(expr $SEQNUM + 1)
 	done
+	printf "</channel>\n</rss>"
 }
 
 if [ -f rss.xml ]; then
