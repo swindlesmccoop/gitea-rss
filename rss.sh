@@ -5,10 +5,10 @@ USERNAME="swindlesmccoop"
 GITSITE="https://git.cbps.xyz"
 
 #how many posts to show at a time
-POSTNUM=10
+POSTNUM=20
 
 #cooldown between updates (in seconds)
-UPDATEINTERVAL=10
+UPDATEINTERVAL=0
 
 FULLURL="$GITSITE"/"$USERNAME"
 USERAGENT="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36"
@@ -23,7 +23,7 @@ make_rss () {
 	printf '</description>\n<language>en-us</language>\n<link>' >> rss.xml
 	printf "$FULLURL" >> rss.xml
 	printf '</link>\n\n<!-- Activity -->\n\n' >> rss.xml
-}	
+}
 
 update_rss () {
 	make_rss
@@ -31,14 +31,12 @@ update_rss () {
 	SEQNUM=1
 	#EVER TRY PARSING HTML WITH PLAIN COREUTILS?? NOT FUN!!!!!!
 	for i in $(seq $POSTNUM); do
-		TITLE=$(awk "/push news/{i++}i==$SEQNUM" "$USERNAME.html" | grep -A 7 "push news" | sed "1,7d" | sed "s/				//g" | sed 's/<a href=\"[^"]*\" rel="nofollow">//g' | sed 's/<\/a>//g' | sed 's/^./\u&/' | sed 's/&#34;/"/g' | sed "s/&#39;/'/g")
-		if [ "$TITLE" = "" ]; then
-			TITLE="Empty title"
-		fi
+		TITLEPT1=$(awk "/push news/{i++}i==$SEQNUM" "$USERNAME.html" | grep -A 7 "push news" | sed "1,7d" | sed "s/				//g" | sed 's/<a href=\"[^"]*\" rel="nofollow">//g' | sed 's/<\/a>.*//g' | sed 's/^./\u&/' | sed 's/&#34;/"/g' | sed "s/&#39;/'/g")
 		PUBDATE=$(grep -o -P '(?<=<span class="time-since" title=").*(?= UTC)' "$USERNAME.html" | sed -n "$SEQNUM"p)
 		DESCRIPTION="$(grep -A 1 '<span class="text truncate light grey">' $USERNAME.html -m $SEQNUM | tail -n 1 | sed "s/	//g" | sed "s/&#39;/'/g" | sed 's/<a href=\"[^"]*//g' | sed 's/<\/a>//g' | sed 's/ " class="link"//g' | sed 's/>/ /g')"
 		URL="$(grep -o 'mr-2" href=".*' $USERNAME.html -m $SEQNUM | tail -n 1 | sed "s/\///" | sed 's/mr-2" href="//g' | sed "s/\">.*<\/a>//g")"
-		printf "<item>\n<title>$TITLE</title>\n<guid>$GITSITE/$URL</guid>\n<link>$GITSITE/$URL</link>\n<pubDate>$PUBDATE +0000</pubDate>\n<description><![CDATA[\n<p>$DESCRIPTION</p>\n]]></description>\n</item>\n\n"
+		TITLEPT2="$(echo "$URL" | sed "s|/commit.*||")"
+		printf "<item>\n<title>$TITLEPT1 at $TITLEPT2</title>\n<guid>$GITSITE/$URL</guid>\n<link>$GITSITE/$URL</link>\n<pubDate>$PUBDATE +0000</pubDate>\n<description><![CDATA[\n<p>$DESCRIPTION</p>\n]]></description>\n</item>\n\n"
 		SEQNUM=$(expr $SEQNUM + 1)
 	done
 	printf "</channel>\n</rss>"
